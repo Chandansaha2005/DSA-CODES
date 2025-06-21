@@ -1,4 +1,4 @@
-# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="60" /> DSA-CODES OF CKS
+# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="60" /> DSA-CODES OF CKS
 
 Welcome to my DSA (Data Structures and Algorithms) learning repository!
 
