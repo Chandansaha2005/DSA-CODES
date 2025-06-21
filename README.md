@@ -1,4 +1,4 @@
-# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="60" /> DSA-CODES OF CKS
+# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="50" /> DSA-CODES OF CKS
 
 Welcome to my DSA (Data Structures and Algorithms) learning repository!
 
@@ -94,4 +94,4 @@ If you have questions, feedback, or collaboration ideas — connect with me here
 
 Thanks for checking out my work!  
 Let’s master DSA together! 🔥  
-— **Chandan Saha (CKS)**
+— **Chandan Saha**
