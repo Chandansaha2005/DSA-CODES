@@ -1,4 +1,4 @@
-// POSTFIX TO INFIX 👇
+// POSTFIX TO INFIX 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
