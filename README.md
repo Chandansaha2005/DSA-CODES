@@ -57,7 +57,7 @@ Here’s a breakdown of the topics and the programs I’ve written till now:
 
 *More topics coming soon as I go deeper into DSA!*
 
-🔗 [CLICK HERE TO ACCESS ALL CODES](https://github.com/Chandansaha2005/DSA-CODES)
+🔗 [CLICK HERE TO ACCESS ALL CODES](https://github.com/Chandansaha2005/DSA-CODES/tree/main)
 
 ---
 
