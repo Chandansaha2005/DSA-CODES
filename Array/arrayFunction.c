@@ -10,7 +10,7 @@ void search(int arr[], int n, int val)
             f = i;
         }
     }
-    (f < 0) ? printf("\nNOT found\n") : printf("\nFound at position = %d\n", f + 1);
+    (f < 0) ? printf("NOT found\n") : printf("Found at position = %d\n", f + 1);
 }
 void replace(int arr[], int n, int val, int pos)
 {
@@ -78,10 +78,89 @@ void input(int arr[], int n)
 }
 void main()
 {
-    int arr[100], n, i;
+    int arr[100], n, i, c = 0;
     printf("Enter the number of elements = ");
     scanf("%d", &n);
     input(arr, n);
     display(arr, n);
-    
+    do
+    {
+        int val, pos;
+        printf("\nEnter 1 For Insert");
+        printf("\nEnter 2 For Delete");
+        printf("\nEnter 3 For Replace");
+        printf("\nEnter 4 For Search");
+        printf("\nEnter 5 For Display");
+        printf("\nEnter 6 For Exit");
+        printf("\nEnter Your Choice = ");
+        scanf("%d", &c);
+        switch (c)
+        {
+        case 1:
+            printf("Enter The Value To Insert = ");
+            scanf("%d", &val);
+            printf("\nEnter 1 For Insert At Beg ");
+            printf("\nEnter 2 For Insert At End");
+            printf("\nEnter 3 For Insert At Specific");
+            printf("\nEnter Your Choice = ");
+            scanf("%d", &pos);
+            switch (pos)
+            {
+            case 1:
+                insert(arr, &n, val, 1);
+                break;
+            case 2:
+                insert(arr, &n, val, n);
+                break;
+            case 3:
+                printf("Enter The Position To Insert = ");
+                scanf("%d", &pos);
+                insert(arr, &n, val, pos);
+                break;
+            default:
+                break;
+            }
+            break;
+        case 2:
+            printf("\nEnter 1 For Delete At Beg ");
+            printf("\nEnter 2 For Delete At End");
+            printf("\nEnter 3 For Delete At Specific");
+            printf("\nEnter Your Choice = ");
+            scanf("%d", &pos);
+            switch (pos)
+            {
+            case 1:
+                del(arr, &n, 1);
+                break;
+            case 2:
+                del(arr, &n, n);
+                break;
+            case 3:
+                printf("Enter The Position To Delete = ");
+                scanf("%d", &pos);
+                del(arr, &n, pos);
+                break;
+            default:
+                break;
+            }
+            break;
+        case 3:
+            printf("Enter The Position To Replace = ");
+            scanf("%d", &pos);
+            printf("Enter The Number = ");
+            scanf("%d", &val);
+            replace(arr, n, val, pos);
+            break;
+        case 4:
+            printf("Enter The Number to Search = ");
+            scanf("%d", &val);
+            search(arr, n, val);
+            break;
+        case 5:
+            display(arr, n);
+            break;
+        default:
+            exit(0);
+        }
+    } while (c < 6);
 }
