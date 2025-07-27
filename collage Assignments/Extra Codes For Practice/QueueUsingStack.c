@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 3
-void enqueue();               // function declaration
-void dequeue();                // function declaration
-void display();            // function declaration//peep()   peek()
-int stack[SIZE],queue[SIZE] ,top = -1; // variable declaration
+void enqueue();                                       // function declaration
+void dequeue();                                       // function declaration
+void display();                                       // function declaration//peep()   peek()
+int stack[SIZE], queue[SIZE], s_top = -1, q_top = -1; // variable declaration
 int value, choice;
 void main()
 {
@@ -30,9 +30,28 @@ void main()
         }
     }
 }
+void queuefication(int stack[])
+{
+    int top = s_top;
+    q_top = -1;
+    for (int i = 0; i <= s_top; i++)
+    {
+        queue[++q_top] = stack[top--];
+        printf("q_top = %d", q_top);
+    }
+}
+void stackfication(int queue[])
+{
+    int top = q_top;
+    s_top = -1;
+    for (int i = 0; i <= q_top; i++)
+    {
+        stack[++s_top] = queue[top--];
+    }
+}
 void enqueue() // func. definition
 {
-    if (top == SIZE - 1)
+    if (s_top == SIZE - 1 && q_top == SIZE - 1)
     {
         printf("\nStack is Full!!! Insertion is not possible!!!");
         return;
@@ -41,38 +60,41 @@ void enqueue() // func. definition
     {
         printf("Enter the No. = ");
         scanf("%d", &value);
-        top++;
-        stack[top] = value;
+        s_top++;
+        stack[s_top] = value;
         printf("\nInsertion success!!!");
+        queuefication(stack);
         display();
     }
 }
 void dequeue() // func. definition
 {
-    if (top == -1)
+    if (s_top == -1)
     {
         printf("\nStack is Empty!!! Deletion is not possible!!!");
         return;
     }
     else
     {
-        printf("\nDeleted : %d\n", stack[top]);
-        top--;
+        stackfication(queue);
+        printf("\nDeleted : %d\n", stack[s_top]);
+        s_top--;
         display();
     }
 }
 void display() // func. definition
 {
     int i;
-    if (top == -1)
+    if (s_top == -1 && q_top == -1)
     {
         printf("Stack is empty \n");
         return;
     }
     else
     {
+        stackfication(queue);
         printf("Stack is : \n");
-        for (i = 0; i <= top; i++)
+        for (i = 0; i <= s_top; i++)
             printf("%d ", stack[i]);
         printf("\n");
     }
