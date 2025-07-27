@@ -2,28 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 3
-void enqueue();                                       // function declaration
-void dequeue();                                       // function declaration
-void display();                                       // function declaration//peep()   peek()
-int stack[SIZE], queue[SIZE], s_top = -1, q_top = -1; // variable declaration
+void enqueue();
+void dequeue();
+void display();
+int stack[SIZE], queue[SIZE], s_top = -1, q_top = -1;
 int value, choice;
 void main()
 {
     while (1)
     {
         printf("\n\n***** MENU *****\n");
-        printf("1. enqueue\n2. dequeue\n3. Exit");
+        printf("1. enqueue\n2. dequeue\n3. display\n4. exit");
         printf("\nEnter your choice: ");
         scanf("%d", &choice);
         switch (choice)
         {
         case 1:
-            enqueue(); // func. calling
+            enqueue();
             break;
         case 2:
-            dequeue(); // func. calling
+            dequeue();
             break;
         case 3:
+            display();
+            break;
+        case 4:
             exit(0);
         default:
             printf("\nWrong selection!!! Try again!!!");
@@ -49,7 +52,7 @@ void stackfication(int queue[])
         stack[++s_top] = queue[top--];
     }
 }
-void enqueue() // func. definition
+void enqueue()
 {
     if (s_top == SIZE - 1 && q_top == SIZE - 1)
     {
@@ -66,7 +69,7 @@ void enqueue() // func. definition
         display();
     }
 }
-void dequeue() // func. definition
+void dequeue()
 {
     if (s_top == -1 && q_top == -1)
     {
@@ -80,7 +83,7 @@ void dequeue() // func. definition
         display();
     }
 }
-void display() // func. definition
+void display()
 {
     int i;
     if (s_top == -1 && q_top == -1)
