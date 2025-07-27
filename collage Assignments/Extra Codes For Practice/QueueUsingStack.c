@@ -60,8 +60,7 @@ void enqueue() // func. definition
     {
         printf("Enter the No. = ");
         scanf("%d", &value);
-        s_top++;
-        stack[s_top] = value;
+        stack[++s_top] = value;
         printf("\nInsertion success!!!");
         queuefication(stack);
         display();
@@ -69,16 +68,15 @@ void enqueue() // func. definition
 }
 void dequeue() // func. definition
 {
-    if (s_top == -1)
+    if (s_top == -1 && q_top == -1)
     {
         printf("\nStack is Empty!!! Deletion is not possible!!!");
         return;
     }
     else
     {
+        printf("\nDeleted : %d\n", queue[q_top--]);
         stackfication(queue);
-        printf("\nDeleted : %d\n", stack[s_top]);
-        s_top--;
         display();
     }
 }
@@ -92,7 +90,6 @@ void display() // func. definition
     }
     else
     {
-        stackfication(queue);
         printf("Stack is : \n");
         for (i = 0; i <= s_top; i++)
             printf("%d ", stack[i]);
