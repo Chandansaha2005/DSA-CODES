@@ -1,3 +1,4 @@
+// WAP to implement Queue using Stack
 #include <stdio.h>
 #include <stdlib.h>
 

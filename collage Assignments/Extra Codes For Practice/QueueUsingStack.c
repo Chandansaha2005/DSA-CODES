@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #define SIZE 3
 void enqueue();
-void dequeue();
+int dequeue();
 void display();
 int stack[SIZE], queue[SIZE], s_top = -1, q_top = -1;
 int value, choice;
@@ -21,8 +21,12 @@ void main()
             enqueue();
             break;
         case 2:
-            dequeue();
+        {
+            int del = dequeue();
+            if (del != -1)
+                printf("Deleted : %d", del);
             break;
+        }
         case 3:
             display();
             break;
@@ -69,19 +73,18 @@ void enqueue()
         display();
     }
 }
-void dequeue()
+int dequeue()
 {
     if (s_top == -1 && q_top == -1)
     {
         printf("\nStack is Empty!!! Deletion is not possible!!!");
-        return;
+        return -1;
     }
-    else
-    {
-        printf("\nDeleted : %d\n", queue[q_top--]);
-        stackfication(queue);
-        display();
-    }
+
+    int del = queue[q_top--];
+    stackfication(queue);
+    display();
+    return del;
 }
 void display()
 {
