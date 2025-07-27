@@ -7,7 +7,6 @@
 int stack1[SIZE], stack2[SIZE];
 int top1 = -1, top2 = -1;
 
-// Enqueue operation
 void enqueue(int value)
 {
     if (top1 >= SIZE - 1)
