@@ -1,30 +1,28 @@
 #include <stdio.h>
-int d, b = -1, binary[100];
-void display()
+#define SIZE 100
+int d, top = -1, stack[SIZE];
+void push(int value)
 {
-    printf("%d in Binary = ", d);
-    for (int i = 0; i <= b; i++)
-    {
-        printf("%d ", binary[i]);
-    }
+    stack[++top] = value;
 }
-void convertBinary(int d)
+int pop()
 {
-    if (d == 0)
-    {
-        binary[++b] = 0;
-    }
-    else
-    {
-        for (int i = d; i >= 0; i = d / 2)
-            binary[++b] = i % 2;
-    }
-    display();
+    int bi = stack[top--];
+    return bi;
 }
 void main()
 {
     printf("----DECIMAL TO BINARY----");
     printf("\nEnter the Decimal Number = ");
     scanf("%d", &d);
-    convertBinary(d);
+    for (int i = d; i > 0; i /= 2)
+        push(i % 2);
+    printf("%d In Binary = ", d);
+    int n = top;
+    for (int i = 0; i <= n; i++)
+    {
+        int bi = pop();
+        if (bi != -1)
+            printf("%d ", bi);
+    }
 }
