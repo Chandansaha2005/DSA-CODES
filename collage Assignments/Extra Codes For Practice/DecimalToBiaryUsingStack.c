@@ -1,6 +1,6 @@
 //----DECIMAL TO BINARY----
 #include <stdio.h>
-#define SIZE 100
+#define SIZE 50
 int d, top = -1, stack[SIZE];
 void push(int value)
 {
