@@ -19,7 +19,7 @@ void ENQUEUE(char v)
 }
 char DEQUEUE()
 {
-    if (front == -1 || front > rear)
+    if (front == -1 || front > rear) 
     {
         printf("QUEUE UNDERFLOW");
         exit(0);
