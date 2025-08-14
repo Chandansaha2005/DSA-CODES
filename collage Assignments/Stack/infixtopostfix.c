@@ -24,6 +24,24 @@ int pop()
 }
 void main()
 {
-    char infix[MAX] , post[MAX];
-    
+    char infix[MAX], post[MAX], ch;
+    do
+    {
+        printf("\nEnter 1 For Infix To Postfix Conversion.\n");
+        printf("Enter 2 For Postfix Evaluation.\n");
+        printf("Enter 3 For Exit");
+        scanf("Enter Your Choice = ");
+        scanf(" %c", &ch);
+        switch (ch)
+        {
+        case '1':
+            printf("Enter Infix Expression = ");
+            scanf(" %s", &infix);
+            printf(infix);
+            break;
+
+        default:
+            break;
+        }
+    } while (1);
 }
