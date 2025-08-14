@@ -1,9 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <ctype.h>
 #define SIZE 100
-int stack[SIZE];
-int top = -1;
+int stack[SIZE], top = -1;
 
 void push(int value)
 {
@@ -27,49 +27,48 @@ int posteval(char post[])
 {
     int i = 0;
     char sml;
-    while (post[i] == '\0')
+    while (post[i] != '\0')
     {
         sml = post[i];
         if (isdigit(sml))
             push(sml - '0');
+        else if (isoperator(sml))
+        {
+            int op2 = pop();
+            int op1 = pop();
+            switch (sml)
+            {
+            case '+':
+                push(op1 + op2);
+                break;
+            case '-':
+                push(op1 - op2);
+                break;
+            case '*':
+                push(op1 * op2);
+                break;
+            case '/':
+                push(op1 / op2);
+                break;
+            case '^':
+                push(pow(op1, op2));
+                break;
+            }
+        }
         else
         {
-            if (isoperator(sml))
-            {
-                int op2 = pop();
-                int op1 = pop();
-                switch (sml)
-                {
-                case '+':
-                    push(op1 + op2);
-                    break;
-                case '-':
-                    push(op1 - op2);
-                    break;
-                case '*':
-                    push(op1 * op2);
-                    break;
-                case '/':
-                    push(op1 / op2);
-                    break;
-                case '^':
-                    push(pow(op1, op2));
-                    break;
-                default:
-                    printf("WRONG EXPRESSION");
-                    break;
-                }
-            }
+            printf("WRONG EXPRESSION");
+            exit(0);
         }
         i++;
     }
     return pop();
 }
+
 void main()
 {
     char postfix[SIZE];
-    int i;
     printf("Enter the Postfix Expression = ");
-    scanf("%s", postfix);
+    scanf(" %s", postfix);
     printf("Postfix Evaluation = %d", posteval(postfix));
 }
