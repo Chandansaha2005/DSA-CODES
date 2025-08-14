@@ -24,5 +24,6 @@ int pop()
 }
 void main()
 {
-    char infix[MAX] , post[MAX]
+    char infix[MAX] , post[MAX];
+    
 }
