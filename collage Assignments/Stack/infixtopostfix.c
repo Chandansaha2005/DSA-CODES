@@ -1,99 +1,99 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#define MAX 30
-char stack[MAX], top = -1;
+#define SIZE 100
+char stack[SIZE];
+int top = -1;
+
 void push(char value)
 {
     stack[++top] = value;
 }
+
 char pop()
 {
     if (top == -1)
-    {
-        printf("STACK UNDERFLOW!!!\n");
         return -1;
-    }
-    return stack[top--];
+    else
+        return stack[top--];
 }
-int precedence(char op)
+
+int prec(char symbol)
 {
-    switch (op)
+    switch (symbol)
     {
-    case '+':
-    case '-':
-        return 1;
+    case '^':
+        return 3;
     case '*':
     case '/':
         return 2;
-    case '^':
-        return 3;
-    default:
-        return 0;
-    }
-}
-int isoparator(char op)
-{
-    switch (op)
-    {
     case '+':
     case '-':
-    case '*':
-    case '/':
-    case '^':
         return 1;
     default:
         return 0;
     }
 }
-void infixToPost(char infix[], char post[])
+
+int isoperator(char symbol)
+{
+    return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/' || symbol == '^');
+}
+
+void infixtopost(char infix[], char postfix[])
 {
     int i = 0, j = 0;
-    char sml;
-    while (post[i] != '\0')
+    char symbol;
+    while (infix[i] != '\0')
     {
-        sml = post[i];
-        if (sml == '(')
-            push(sml);
-        else if (isalnum(sml))
-            post[j++] = sml;
-        else if (sml == ')')
+        symbol = infix[i];
+        if (symbol == '(')
+        {
+            push(symbol);
+        }
+        else if (isalnum(symbol))
+        {
+            postfix[j++] = symbol;
+        }
+        else if (symbol == ')')
         {
             while (stack[top] != '(')
             {
-                post[j++] = pop();
+                postfix[j++] = pop();
             }
             pop();
         }
-        else if (isoparator(sml) != 0)
+        else if (isoperator(symbol))
         {
-            while (isoparator(stack[top]) >= isoparator(sml) && stack[top] != '(')
+            while (prec(stack[top]) >= prec(symbol) && stack[top] != '(')
             {
-                post[j++] = pop();
+                postfix[j++] = pop();
             }
-            pop();
+            push(symbol);
         }
         else
         {
-            printf("WORNG EXPRESSION!!\n");
+            printf("Wrong Expression\n");
             return;
         }
         i++;
     }
     while (top != -1)
     {
-        post[j++] = pop();
+        postfix[j++] = pop();
     }
-    post[j] = '\0';
+    postfix[j] = '\0';
 }
 void main()
 {
-    char infix[MAX], post[MAX];
-    printf("Enter Infix Expression = ");
-    scanf(" %s", &infix);
-    infixToPost(infix, post);
-    for (int i = 0; post[i] != '\0'; i++)
+    char infix[SIZE], postfix[SIZE];
+    int i;
+    printf("Enter the Infix Expression = ");
+    scanf("%s", infix);
+    infixtopost(infix, postfix);
+    printf("Postfix Expression = ");
+    for (i = 0; postfix[i] != '\0'; i++)
     {
-        printf(" %c", post[i]);
+        printf(" %c", postfix[i]);
     }
 }
