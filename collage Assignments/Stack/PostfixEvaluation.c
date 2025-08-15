@@ -9,7 +9,7 @@ void push(int value){
     stack[++top] = value;
 }
 
-char pop(){
+int pop(){
     if (top == -1) return -1;
     else return stack[top--];
 }
@@ -28,8 +28,7 @@ int posteval(char post[])
         sml = post[i];
         if (isdigit(sml)) push(sml - '0');
         else if (isoperator(sml)){
-            int op2 = pop();
-            int op1 = pop();
+            int op2 = pop(),op1 = pop();
             if(sml=='+') push(op1 + op2);
             if(sml=='-') push(op1 - op2);
             if(sml=='*') push(op1 * op2);
@@ -39,8 +38,7 @@ int posteval(char post[])
         else{
             printf("WRONG EXPRESSION");
             exit(0);
-        }
-        i++;
+        }i++;
     }return pop();
 }
 
