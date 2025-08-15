@@ -5,17 +5,13 @@
 #define SIZE 100
 int stack[SIZE], top = -1;
 
-void push(int value)
-{
+void push(int value){
     stack[++top] = value;
 }
 
-char pop()
-{
-    if (top == -1)
-        return -1;
-    else
-        return stack[top--];
+char pop(){
+    if (top == -1) return -1;
+    else return stack[top--];
 }
 
 int isoperator(char symbol)
@@ -30,43 +26,25 @@ int posteval(char post[])
     while (post[i] != '\0')
     {
         sml = post[i];
-        if (isdigit(sml))
-            push(sml - '0');
-        else if (isoperator(sml))
-        {
+        if (isdigit(sml)) push(sml - '0');
+        else if (isoperator(sml)){
             int op2 = pop();
             int op1 = pop();
-            switch (sml)
-            {
-            case '+':
-                push(op1 + op2);
-                break;
-            case '-':
-                push(op1 - op2);
-                break;
-            case '*':
-                push(op1 * op2);
-                break;
-            case '/':
-                push(op1 / op2);
-                break;
-            case '^':
-                push(pow(op1, op2));
-                break;
-            }
+            if(sml=='+') push(op1 + op2);
+            if(sml=='-') push(op1 - op2);
+            if(sml=='*') push(op1 * op2);
+            if(sml=='/') push(op1 / op2);
+            if(sml=='^') push(pow(op1, op2));
         }
-        else
-        {
+        else{
             printf("WRONG EXPRESSION");
             exit(0);
         }
         i++;
-    }
-    return pop();
+    }return pop();
 }
 
-void main()
-{
+void main(){
     char postfix[SIZE];
     printf("Enter the Postfix Expression = ");
     scanf(" %s", postfix);
