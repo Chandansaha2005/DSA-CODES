@@ -12,7 +12,6 @@ void createlist(int n)
     struct Node *newNode, *temp;
     int x, i;
     head = NULL;
-    count = 0;
     for (i = 1; i <= n; i++)
     {
         newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -20,7 +19,6 @@ void createlist(int n)
         scanf("%d", &x);
         newNode->data = x;
         newNode->next = NULL;
-
         if (head == NULL)
         {
             head = newNode;
@@ -34,10 +32,27 @@ void createlist(int n)
         count++;
     }
 }
+void insertAtBeg()
+{
+    struct Node *beg, *temp;
+    int x;
+    beg = (struct Node *)malloc(sizeof(struct Node));
+    printf("Enter The Number = ");
+    scanf("%d", &x);
+    beg->data = x;
+    beg->next = head;
+    head = beg;
+    count++;
+}
 void display()
 {
     struct Node *p;
     p = head;
+    if (p == NULL)
+    {
+        printf("Linked List Empty");
+        return;
+    }
     printf("\n------- :Linked List: -------\n");
     while (p != NULL)
     {
@@ -48,5 +63,7 @@ void display()
 void main()
 {
     createlist(2);
+    display();
+    insertAtBeg();
     display();
 }
