@@ -34,14 +34,33 @@ void createlist(int n)
 }
 void insertAtBeg()
 {
-    struct Node *beg, *temp;
-    int x;
-    beg = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *beg = (struct Node *)malloc(sizeof(struct Node));
     printf("Enter The Number = ");
-    scanf("%d", &x);
-    beg->data = x;
+    scanf("%d", &beg->data);
     beg->next = head;
     head = beg;
+    count++;
+}
+void insertAtEnd()
+{
+    struct Node *end, *temp = head;
+    int x;
+    end = (struct Node *)malloc(sizeof(struct Node));
+    printf("Enter The Number = ");
+    scanf("%d", &end->data);
+    end->next = NULL;
+    if (head == NULL)
+    {
+        head = end;
+    }
+    else
+    {
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = end;
+    }
     count++;
 }
 void display()
@@ -65,5 +84,7 @@ void main()
     createlist(2);
     display();
     insertAtBeg();
+    display();
+    insertAtEnd();
     display();
 }
