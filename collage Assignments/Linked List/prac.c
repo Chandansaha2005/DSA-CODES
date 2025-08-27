@@ -1,23 +1,37 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct Node{
-    int data ;
+struct Node
+{
+    int data;
     struct Node *next;
 };
 struct Node *head;
-int count = 0 ; 
-void createNode(int n){
-    struct Node *newNode , *temp ;
-    head=NULL;
-    for(int i = 0 ; i < n ; i++){
+int count = 0;
+void createNode(int n)
+{
+    struct Node *newNode, *temp;
+    head = NULL;
+    for (int i = 0; i < n; i++)
+    {
         newNode = (struct Node *)malloc(sizeof(struct Node));
         printf("Enter the Element = ");
-        scanf("%d",&newNode->data);
-        newNode->next=NULL;
+        scanf("%d", &newNode->data);
+        newNode->next = NULL;
+        if (head == NULL)
+        {
+            head = newNode;
+            temp = head;
+        }
+        else
+        {
+            temp->next = newNode;
+            temp = newNode;
+        }
+        count++;
     }
-
 }
-void main (){
+void main()
+{
     createNode(5);
 }
