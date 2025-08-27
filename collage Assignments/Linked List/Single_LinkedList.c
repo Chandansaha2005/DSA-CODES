@@ -81,8 +81,8 @@ void display()
 }
 void main()
 {
-    createlist(2);
-    display();
+    // createlist(2);
+    // display();
     insertAtBeg();
     display();
     insertAtEnd();
