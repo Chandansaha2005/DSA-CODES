@@ -41,6 +41,31 @@ void insertAtBeg()
     head = beg;
     count++;
 }
+void insertAtSpecific(int pos)
+{
+    struct Node *newNode, *temp = head, *prev;
+    int x;
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+    printf("Enter The Number = ");
+    scanf("%d", &newNode->data);
+    newNode->next = NULL;
+    if (head == NULL)
+    {
+        newNode->next = head;
+        head = newNode;
+    }
+    else
+    {
+        for (int i = 0; i < pos; i++)
+        {
+            prev->next = temp;
+            temp = temp->next;
+        }
+        prev->next = newNode;
+        newNode->next = temp;
+    }
+    count++;
+}
 void insertAtEnd()
 {
     struct Node *end, *temp = head;
@@ -81,10 +106,12 @@ void display()
 }
 void main()
 {
-    // createlist(2);
-    // display();
+    createlist(2);
+    display();
     insertAtBeg();
     display();
     insertAtEnd();
+    display();
+    insertAtSpecific(2);
     display();
 }
