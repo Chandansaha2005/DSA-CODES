@@ -30,6 +30,12 @@ void main()
       }
    }
 }
+/**
+ * The function `push` inserts a value into a stack if it is not full, displaying an error message if
+ * the stack is full.
+ * 
+ * return The function `push()` returns void, which means it does not return any value.
+ */
 void push() // func. definition
 {
    if (top == SIZE - 1)
