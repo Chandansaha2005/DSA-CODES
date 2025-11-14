@@ -52,6 +52,17 @@ void insert(int data)
     r++;//1
     display_pqueue();
 }
+/**
+ * The function `check` inserts a data value into a priority queue in a sorted manner.
+ * 
+ * @param data The `data` parameter is an integer value that is being checked against the elements in
+ * the `pri_que` array to determine its position in the priority queue.
+ * 
+ * @return The function `check` returns when it finds the correct position to insert the `data` into
+ * the `pri_que` array. If the `data` is greater than or equal to the element at index `i`, it shifts
+ * the elements to the right to make space for `data` and inserts `data` at index `i`. If no such
+ * position is found, it inserts `data`
+ */
 void check(int data)
 {
     int i,j;

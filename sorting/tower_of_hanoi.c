@@ -21,7 +21,7 @@ void main()
     scanf("%d", &n);
     initialisation(&step_no);
     Tower_of_Hanoi(&step_no, n, 'S', 'A', 'T');
-}
+} 
 
 /*
 Algorithm
