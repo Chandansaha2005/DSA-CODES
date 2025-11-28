@@ -1,6 +1,6 @@
-//wap to implement priority queue using array
-#include<stdio.h>
-#include<stdlib.h>
+// wap to implement priority queue using array
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX 4
 void insert(int);
 void del(int);
@@ -13,24 +13,24 @@ void main()
     printf("\n1 - Insert an element into queue\n2 - Delete an element from queue\n3 - Exit");
     while (1)
     {
-        printf("\nEnter your choice : ");    
+        printf("\nEnter your choice : ");
         scanf("%d", &ch);
         switch (ch)
         {
-            case 1: 
-                printf("\nEnter value to be inserted : ");
-                scanf("%d",&n);//n=15 10
-                insert(n);//calling 
-                break;
-            case 2:
-                printf("\nEnter value to delete : ");
-                scanf("%d",&n);//n=50
-                del(n);//calling 
-                break;
-            case 3: 
-                exit(0);
-            default: 
-                printf("\nChoice is incorrect, Enter a correct choice");
+        case 1:
+            printf("\nEnter value to be inserted : ");
+            scanf("%d", &n); // n=15 10
+            insert(n);       // calling
+            break;
+        case 2:
+            printf("\nEnter value to delete : ");
+            scanf("%d", &n); // n=50
+            del(n);          // calling
+            break;
+        case 3:
+            exit(0);
+        default:
+            printf("\nChoice is incorrect, Enter a correct choice");
         }
     }
 }
@@ -46,42 +46,31 @@ void insert(int data)
         f++;
         pri_que[++r] = data;
         return;
-    }    
+    }
     else
-        check(data);//calling 
-    r++;//1
+        check(data); // calling
+    r++;             // 1
     display_pqueue();
 }
-/**
- * The function `check` inserts a data value into a priority queue in a sorted manner.
- * 
- * @param data The `data` parameter is an integer value that is being checked against the elements in
- * the `pri_que` array to determine its position in the priority queue.
- * 
- * @return The function `check` returns when it finds the correct position to insert the `data` into
- * the `pri_que` array. If the `data` is greater than or equal to the element at index `i`, it shifts
- * the elements to the right to make space for `data` and inserts `data` at index `i`. If no such
- * position is found, it inserts `data`
- */
 void check(int data)
 {
-    int i,j;
-    for ( i = 0; i <= r; i++)
+    int i, j;
+    for (i = 0; i <= r; i++)
     {
-        if (data >= pri_que[i])//10>=15
+        if (data >= pri_que[i]) // 10>=15
         {
-            for ( j = r + 1; j > i; j--)
+            for (j = r + 1; j > i; j--)
                 pri_que[j] = pri_que[j - 1];
             pri_que[i] = data;
             return;
         }
     }
-    pri_que[i] = data;//
+    pri_que[i] = data; //
 }
 void del(int data)
 {
     int i;
-    if ((f==-1) && (r==-1))
+    if ((f == -1) && (r == -1))
     {
         printf("\nQueue is empty no elements to delete");
         return;
@@ -90,11 +79,11 @@ void del(int data)
     {
         if (data == pri_que[i])
         {
-            for (; i < r; i++)//i=0  0<0 i++
+            for (; i < r; i++) // i=0  0<0 i++
                 pri_que[i] = pri_que[i + 1];
             pri_que[i] = 0;
-            r--;//-1
-            if (r == -1) 
+            r--; //-1
+            if (r == -1)
                 f = -1;
             return;
         }
@@ -109,6 +98,6 @@ void display_pqueue()
         printf("\nQueue is empty");
         return;
     }
-    for (int i=f; i<= r; i++)
+    for (int i = f; i <= r; i++)
         printf(" %d ", pri_que[i]);
 }
