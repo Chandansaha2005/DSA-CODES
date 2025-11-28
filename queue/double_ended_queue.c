@@ -57,7 +57,7 @@ void insert_left()
     if((left == 0 && right == MAX-1) || (left == right+1))
     {	
         printf("Queue Overflow \n");
-        return;	 
+        return;	
     }
     if (left == -1)//If queue is initially empty/
     	left = right = 0;
