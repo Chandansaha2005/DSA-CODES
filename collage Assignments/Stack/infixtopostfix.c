@@ -48,27 +48,19 @@ void infixtopost(char infix[], char postfix[])
     {
         symbol = infix[i];
         if (symbol == '(')
-        {
             push(symbol);
-        }
         else if (isalnum(symbol))
-        {
             postfix[j++] = symbol;
-        }
         else if (symbol == ')')
         {
             while (stack[top] != '(')
-            {
                 postfix[j++] = pop();
-            }
             pop();
         }
         else if (isoperator(symbol))
         {
             while (prec(stack[top]) >= prec(symbol) && stack[top] != '(')
-            {
                 postfix[j++] = pop();
-            }
             push(symbol);
         }
         else

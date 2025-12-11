@@ -38,9 +38,7 @@ char pop()
 int isOperator(char symbol)
 {
     if (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/' || symbol == '^')
-    {
         return 1;
-    }
     return 0;
 }
 
