@@ -117,7 +117,7 @@ Node *deleteNode(Node *root, int x)
     return root;
 }
 
-int main()
+void main()
 {
     Node *root = NULL;
     int choice, value;
@@ -177,5 +177,4 @@ int main()
             printf("Invalid choice! Try again.\n");
         }
     }
-    return 0;
 }
