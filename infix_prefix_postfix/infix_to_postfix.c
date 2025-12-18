@@ -101,14 +101,11 @@ void infixToPostfix(char infix[], char postfix[])
         i++;
     }
     while (top > -1 && stack[top] != '(')
-    {
         postfix[j++] = pop();
-    }
-
     postfix[j] = '\0';
 }
 
-int main()
+void main()
 {
     char infix[MAX_SIZE], postfix[MAX_SIZE];
 
@@ -117,6 +114,4 @@ int main()
 
     infixToPostfix(infix, postfix);
     printf("Postfix expression: %s\n", postfix);
-
-    return 0;
 }

@@ -60,7 +60,7 @@ struct Node* buildTree()
     return newNode;
 }
 
-int main() 
+void main() 
 {
     printf("Build your binary tree:\n");
     struct Node* root = buildTree();  // Build the tree
@@ -76,6 +76,4 @@ int main()
     printf("Postorder Traversal: ");
     postorderTraversal(root);
     printf("\n");
-
-    return 0;
 }
